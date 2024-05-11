@@ -25,34 +25,34 @@ class SimpleCoffee : Coffee {
 
 }
 
-abstract class CoffeeDecorator(private val decoratorCoffee: Coffee) : Coffee {
+
+class Sugar(private val coffee: Coffee): Coffee {
     override fun cost(): Double {
-        return decoratorCoffee.cost()
+        return coffee.cost() + 0.3
+    }
+    override fun getDescription(): String {
+        return coffee.getDescription() + " and sugar"
+    }
+
+}
+
+class Milk(private val coffee: Coffee): Coffee {
+    override fun cost(): Double {
+        return coffee.cost() + 0.2
     }
 
     override fun getDescription(): String {
-        return decoratorCoffee.getDescription()
+        return coffee.getDescription() + " milk"
     }
 }
-
-class Milk(decoratorCoffee: Coffee) : CoffeeDecorator(decoratorCoffee) {
-    override fun cost(): Double {
-        return super.cost() + 0.5
-    }
-
-    override fun getDescription(): String {
-        return super.getDescription() + " c молоком"
-    }
-}
-
-class Sugar(decoratorCoffee: Coffee) : CoffeeDecorator(decoratorCoffee) {
-    override fun cost(): Double {
-        return super.cost() + 0.2
-    }
-
-    override fun getDescription(): String {
-        return super.getDescription() + " и сахором"
-    }
-}
+//abstract class CoffeeDecorator(private val decoratorCoffee: Coffee) : Coffee {
+//    override fun cost(): Double {
+//        return decoratorCoffee.cost()
+//    }
+//
+//    override fun getDescription(): String {
+//        return decoratorCoffee.getDescription()
+//    }
+//}
 
 
