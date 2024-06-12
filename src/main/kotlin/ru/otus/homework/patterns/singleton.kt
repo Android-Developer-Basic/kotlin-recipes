@@ -12,20 +12,14 @@ fun main() {
     println("db1 === db2: ${db1 === db2}")
 }
 
-class Database private constructor(val data: Map<String, String>) {
-    companion object {
-        private var instance: Database? = null
+object Database {
+    val data: Map<String, String> = mapOf(
+        "1" to "One",
+        "2" to "Two",
+        "3" to "Three"
+    )
 
-        fun getInstance(): Database {
-            if (instance == null) {
-                println("Initializing database...")
-                instance = Database(mapOf(
-                    "1" to "One",
-                    "2" to "Two",
-                    "3" to "Three"
-                ))
-            }
-            return instance!!
-        }
+    fun getInstance(): Database {
+        return this
     }
 }
